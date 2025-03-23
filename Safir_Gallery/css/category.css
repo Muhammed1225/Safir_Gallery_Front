@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+* {
+    font-family: 'Poppins';
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #696969;
+}
+
+/*! Header style */
+
+.header {
+    box-shadow: 0rem 0.5rem 1rem 0.1rem #000;
+    position: sticky;
+    top: 0;
+    border-radius: 10rem;
+    margin: 2rem;
+    z-index: 1000;
+    background-color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 5rem;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.right a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.right i {
+    font-size: 2rem;
+    border: 0.3rem solid #000;
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.left a {
+    color: #000;
+    font-size: 1.7rem;
+    margin-left: 2rem;
+    transition: .5s ease;
+    border-bottom: .1rem solid transparent;
+    text-decoration: none;
+}
+
+.left .active, .left a:hover {
+    padding-bottom: .5rem;
+    border-color: #e84242;
+}
+
+.left i {
+    font-size: 2.3rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+#bars {
+    display: none;
+}
+
+/*! Table and modal style */
+
+.table {
+    font-size: 150%;
+    margin: 0 2rem;
+}
+
+.modal-content {
+    padding: 1rem;
+}
+
+.modal h5 {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.modal label {
+    font-size: 1.5rem;
+}
+
+.modal input {
+    font-size: 1.3rem;
+    margin: 1rem 0;
+}
+
+.btn {
+    font-size: 1.5rem;
+    margin: 1rem 2rem;
+}
+
+/*! Responsive style */
+
+@media(max-width: 600px) {
+    html {
+        font-size: 49%;
+    }
+
+    .card img {
+        height: 35rem;
+    }
+
+    .links {
+        position: absolute;
+        background: #fff;
+        height: 100vh;
+        top: 10rem;
+        padding: 4rem 2rem;
+        box-shadow: 1rem 1rem 1rem 0rem #000;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 30rem;
+        right: 3rem;
+        transition: 0.3s ease-in;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    #bars {
+        display: inline-flex;
+    }
+}
