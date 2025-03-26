@@ -86,13 +86,14 @@ body {
 .box-container {
     padding: 0 7%;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 3rem;
     margin-bottom: 5rem;
 }
 
 .card {
-    width: 34rem;
+    width: 40rem;
     height: 53rem;
     font-size: 1.7rem;
     border-radius: 1rem;

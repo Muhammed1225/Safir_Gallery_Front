@@ -58,7 +58,7 @@ flowerForm.addEventListener('submit', function (event) {
 
 function getFlowers() {
     $.ajax({
-        url: "http://localhost:8080/flowers",
+        url: "https://safirgallery-production.up.railway.app/flowers",
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -97,12 +97,12 @@ function getFlowers() {
                     if (image == element.images[0]) {
                         inner.innerHTML +=
                             `<div class="carousel-item active">
-                            <img src="http://localhost:8080/uploads/${image}" class="d-block w-100">
+                            <img src="https://safirgallery-production.up.railway.app/uploads/${image}" class="d-block w-100">
                         </div>`;
                     } else {
                         inner.innerHTML +=
                             `<div class="carousel-item">
-                            <img src="http://localhost:8080/uploads/${image}" class="d-block w-100">
+                            <img src="https://safirgallery-production.up.railway.app/uploads/${image}" class="d-block w-100">
                         </div>`;
                     }
                 });
@@ -131,7 +131,7 @@ function updateElement(elementId) {
     formData.append('id', elementId);
 
     $.ajax({
-        url: 'http://localhost:8080/flowers',
+        url: 'https://safirgallery-production.up.railway.app/flowers',
         type: "PUT",
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -151,7 +151,7 @@ function updateElement(elementId) {
 
 function getCategories() {
     $.ajax({
-        url: 'http://localhost:8080/categories',
+        url: 'https://safirgallery-production.up.railway.app/categories',
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -172,7 +172,7 @@ function getCategories() {
 
 function getFlowerById(id) {
     $.ajax({
-        url: 'http://localhost:8080/flowers/' + id,
+        url: 'https://safirgallery-production.up.railway.app/flowers/' + id,
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -203,7 +203,7 @@ function addElement() {
     formData.append('categoryId', category);
 
     $.ajax({
-        url: 'http://localhost:8080/flowers',
+        url: 'https://safirgallery-production.up.railway.app/flowers',
         type: "POST",
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -226,7 +226,7 @@ function addElement() {
 function deleteElement(id) {
     if( confirm('Silmək istədiyinizdən əminsiniz?') ) {
         $.ajax({
-            url: 'http://localhost:8080/flowers/' + id,
+            url: 'https://safirgallery-production.up.railway.app/flowers/' + id,
             type: 'DELETE',
             headers: {
                 'Authorization': 'Basic ' + btoa(login)
