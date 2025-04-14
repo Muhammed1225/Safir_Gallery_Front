@@ -1,0 +1,54 @@
+.container {
+    margin-top: 20px;
+}
+
+.card img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+
+body {
+    background-color: black;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+#sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    transition: left 0.3s;
+    z-index: 1000;
+}
+
+#sidebar.open {
+    left: 0;
+}
+
+#toggleSidebar {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1100;
+
+    transition: .3s ease;
+}
+
+#searchBox {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
