@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Safir</title>
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+
+        .card img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        #sidebar {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            transition: left 0.3s;
+            z-index: 1000;
+        }
+
+        #sidebar.open {
+            left: 0;
+        }
+
+        #toggleSidebar {
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1100;
+
+            transition: .3s ease;
+        }
+
+        #searchBox {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="toggleSidebar">&gt;</button>
+
+    <div id="sidebar">
+        <h3>Menü</h3>
+        <input type="text" id="searchBox" placeholder="Çiçek ara..." onkeyup="searchFlowers()">
+        <ul>
+            <li><a href="#" style="color: white;">Ana Sayfa</a></li>
+            <li>Toy xoncalari</li>
+            <li>Bayram xoncalari</li>
+            <li>Baby shower gift box</li>
+            <li>Ramazan xoncasi</li>
+            <li>Kişi gift boxu</li>
+            <li>Qadın gift boxu</li>
+            <li>Müəllim gift boxu</li>
+            <li>Uşaq gift boxu</li>
+            <li>Ad günü giftbox</li>
+            <li>Sünnet xoncasi</li>
+            <li>Bəy xoncası</li>
+            <li>Xına xoncalari</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center text-white">Safir</h1>
+        <div class="row" id="flowerContainer"></div>
+    </div>
+
+    <script>
+        const flowers = [
+            { id: 1, name: "Gül Buketi", price: 50, img: "https://via.placeholder.com/200" },
+            { id: 2, name: "Papatya Buketi", price: 40, img: "https://via.placeholder.com/200" },
+            { id: 3, name: "Lale Buketi", price: 60, img: "https://via.placeholder.com/200" }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function renderFlowers() {
+            const container = document.getElementById("flowerContainer");
+            container.innerHTML = "";
+            flowers.forEach(flower => {
+                container.innerHTML += `
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="${flower.img}" class="card-img-top" alt="${flower.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${flower.name}</h5>
+                                <p class="card-text">Fiyat: ${flower.price} TL</p>
+                                <button class="btn btn-primary" onclick="addToCart(${flower.id})">Sepete Ekle</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function addToCart(id) {
+            const flower = flowers.find(f => f.id === id);
+            cart.push(flower);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById("cart");
+            if (!cartList) return;
+            cartList.innerHTML = "";
+            cart.forEach((item, index) => {
+                cartList.innerHTML += `<li class="list-group-item">${item.name} - ${item.price} TL <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">X</button></li>`;
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCart();
+        }
+
+        function searchFlowers() {
+            const searchValue = document.getElementById("searchBox").value.toLowerCase();
+            const container = document.getElementById("flowerContainer");
+            container.innerHTML = "";
+            flowers.filter(flower => flower.name.toLowerCase().includes(searchValue)).forEach(flower => {
+                container.innerHTML += `
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="${flower.img}" class="card-img-top" alt="${flower.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${flower.name}</h5>
+                                <p class="card-text">Fiyat: ${flower.price} TL</p>
+                                <button class="btn btn-primary" onclick="addToCart(${flower.id})">Sepete Ekle</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        document.getElementById("toggleSidebar").addEventListener("click", function () {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+            this.innerHTML = sidebar.classList.contains("open") ? "&lt;" : "&gt;";
+        });
+
+        renderFlowers();
+        updateCart();
+    </script>
+</body>
+
+</html>
