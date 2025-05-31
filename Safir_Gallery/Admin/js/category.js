@@ -86,6 +86,7 @@ function addCategory() {
             name: nameValue,
         }),
         success: function (response) {
+            sessionStorage.setItem('categoryChanged', 'true'); // 🔥 EKLENDİ
             getCategories();
             closeBtn.click();
         },
@@ -110,6 +111,7 @@ function updateCategory(elementId) {
             name: nameValue,
         }),
         success: function (response) {
+            sessionStorage.setItem('categoryChanged', 'true'); // 🔥 EKLENDİ
             getCategories();
             closeBtn.click();
         },
@@ -129,6 +131,7 @@ function deleteCategory(id) {
             },
             contentType: "application/json",
             success: function (response) {
+                sessionStorage.setItem('categoryChanged', 'true'); // 🔥 İSTEĞE BAĞLI
                 getCategories();
             },
             error: function (xhr, status, error) {
@@ -146,10 +149,8 @@ function getCategoryById(id) {
             'Authorization': 'Basic ' + btoa(login)
         },
         success: function (response) {
-            
             const category = response.categories[0];
             categoryName.value = category.name;
-
         },
         error: function (xhr, status, error) {
             window.location.href = "login.html";
