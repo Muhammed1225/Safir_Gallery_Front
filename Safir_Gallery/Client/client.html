@@ -2,50 +2,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="client.css">
-    <title>Safir Gallery</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Safir Gallery | Məhsullar</title>
+  <link rel="stylesheet" href="client.css">
 </head>
 
 <body>
-    <header class="header">
-        <h1>Safir</h1>
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Çiçək axtar..." onkeydown="searchFlowers()">
-            <i class=""></i>
-        </div>
-    </header>
 
-    <button id="toggleSidebar">&gt;</button>
-
-    <div id="sidebar">
-        <h3>Menü</h3>
-        <input type="text" id="searchBox" placeholder="Çiçek ara..." onkeyup="searchFlowers()">
-        <ul>
-            <li><a href="#" style="color: white;">Ana Sayfa</a></li>
-            <li>Toy xoncalari</li>
-            <li>Bayram xoncalari</li>
-            <li>Baby shower gift box</li>
-            <li>Ramazan xoncasi</li>
-            <li>Kişi gift boxu</li>
-            <li>Qadın gift boxu</li>
-            <li>Müəllim gift boxu</li>
-            <li>Uşaq gift boxu</li>
-            <li>Ad günü giftbox</li>
-            <li>Sünnet xoncasi</li>
-            <li>Bəy xoncası</li>
-            <li>Xına xoncalari</li>
-        </ul>
+  <nav class="navbar">
+    <h1><a href="#home">Safir Gallery</a></h1>
+    <div class="links">
+      <a href="#about">Haqqımızda</a>
+      <a href="#goods">Məhsullar</a>
+      <a href="basket.html">Səbətim</a>
     </div>
+  </nav>
 
-    <div class="container">
-        <h1 class="text-center text-white">Safir</h1>
-        <div class="row" id="flowerContainer"></div>
+  <section id="home" class="home">
+    <div class="text-box">
+      <h2>Möhtəşəm Çiçəklər</h2>
+      <p>Xüsusi anlar üçün xüsusi buketlər</p>
+      <button class="btn"><a href="#goods">Məhsullar</a></button>
     </div>
+  </section>
 
-    <script src="client.js"></script>
+  <section class="about" id="about">
+    <div class="text-box">
+      <p class="title">Safir Gallery</p>
+      <h2>Zərif çiçəklərlə dolu dünyanız</h2>
+      <p class="paragraph">Safir Gallery, xüsusi anlarınız üçün mükəmməl çiçək buketləri təqdim edir.</p>
+      <button class="btn"><a href="#goods">Sifariş Ver</a></button>
+    </div>
+    <div class="image-box">
+      <img src="https://cdn.b12.io/client_media/VFigCsy8/13bea220-5010-11f0-9cd5-0242ac110002-jpg-hero_image.jpeg"
+        alt="flower">
+    </div>
+  </section>
+
+  <section class="goods" id="goods">
+    <p class="title">Zövqünüzə uyğun</p>
+    <h2>Xüsusi anlar üçün unudulmaz seçimlər</h2>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="slogan">“Safir Gallery – Hisslərin dili, çiçəklərin ahəngi.”</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/safirgallery" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@safirgallery" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.me/994501112233" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p class="footer-note">&copy; 2025 Safir Gallery. Bütün hüquqlar qorunur.</p>
+    </div>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="client.js"></script>
+
 </body>
 
 </html>

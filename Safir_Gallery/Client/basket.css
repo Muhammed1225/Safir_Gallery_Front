@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    text-decoration: none;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.btn {
+    padding: 1rem 4rem;
+    border-radius: .5rem;
+    background-color: #32aa27;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    &:hover {
+        background-color: #247d1c;
+        transform: scale(1.05);
+    }
+}
+
+/* header style */
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3rem 5rem;
+    background-color: #fff;
+    box-shadow: 0rem 0.5rem 1rem 0.1rem #000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    h1 a {
+        font-size: 2.8rem;
+        color: #000;
+        font-weight: 700;
+        font-family: Poppins;
+        letter-spacing: .3rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    h1:hover {
+        color: #555;
+    }
+
+
+    .links a {
+        color: #555;
+        text-decoration: none;
+        font-size: 1.6rem;
+        font-weight: 500;
+        margin: 0 1rem;
+        transition: all 0.3s ease;
+        border-bottom: 0.1rem solid transparent;
+    }
+
+    .links .active,
+    .links a:hover {
+        color: #32aa27;
+        padding-bottom: .5rem;
+        border-color: #32aa27;
+    }
+}
+
+/* home section style */
+
+.home {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+        url('https://www.duvargiydir.com/media/catalog/product/h/f/hflw0018-cicekli-cicek-desenli-uc-boyutlu-duvar-kagidi-dekorasyon-cicek-buketi.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 90vh;
+    padding: 0 10%;
+    display: flex;
+    align-items: center;
+
+    h2 {
+        font-size: 6rem;
+        color: #fff;
+        letter-spacing: .1rem;
+        font-family: Poppins;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 2.5rem;
+        color: #fff;
+    }
+}
+
+/* basket section style */
+
+.basket {
+    margin: 5rem 5%;
+    padding: 5rem 5%;
+    background-color: #ccc;
+    border-radius: 2rem;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    .form {
+        label {
+            font-size: 1.6rem;
+            color: #000;
+            display: block;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        input {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-size: 1.7rem;
+            width: 25vw;
+        }
+        
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: .1rem solid #555;
+            padding: 1rem 3rem;
+            margin-bottom: 2rem;
+            justify-content: space-between;
+
+            i {
+                font-size: 2rem;
+                color: #555;
+            }
+        }
+
+        .form-group2 {
+            p {
+                border: .1rem solid #666;
+                padding: 1rem 3rem;
+                border-radius: .5rem;
+                font-size: 1.7rem;
+                color: #fff;
+                background-color: #32aa27;
+                font-weight: 500;
+                margin-bottom: 1rem;
+                align-items: center;
+                cursor: pointer;
+                gap: 2rem;
+                display: flex;
+                transition: 0.3s ease;
+            }
+
+            p:hover {
+                background-color: #247d1c;
+            }
+
+            p.selected {
+                background-color: #247d1c;
+                transform: scale(.95);
+            }
+        }
+    }
+
+    .order {
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+        background-color: chocolate;
+
+        &:hover {
+            background-color: #a65d2e;
+        }
+    }
+
+    #error {
+        color: red;
+        font-size: 1.5rem;
+        display: none;
+    }
+
+    .goods {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.goods-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 1rem;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    height: 60vh;
+    overflow-y: auto;
+
+    .goods-item {
+        background-color: #fff;
+        min-width: 19.2vw;
+        max-width: 19.2vw;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0rem 0.5rem 1rem 0.1rem #000;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-10px);
+        }
+
+        img {
+            width: 100%;
+            height: 14rem;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h4 {
+            font-size: 1rem;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: .8rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1rem;
+            color: #32aa27;
+            font-weight: bold;
+        }
+
+        button {
+            color: #fff;
+            background-color: rgb(255, 88, 88);
+            font-size: 1rem;
+            padding: .5rem 2rem;
+        }
+    }
+}

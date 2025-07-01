@@ -40,7 +40,7 @@ closeBtn.addEventListener('click', function() {
 function getCategories() {
     let counter = 1;
     $.ajax({
-        url: 'https://safirgallery-production.up.railway.app/categories',
+        url: 'http://localhost:8080/categories',
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -76,7 +76,7 @@ function addCategory() {
     const nameValue = categoryName.value;
 
     $.ajax({
-        url: "https://safirgallery-production.up.railway.app/categories",
+        url: "http://localhost:8080/categories",
         type: "POST",
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -100,7 +100,7 @@ function updateCategory(elementId) {
     const nameValue = categoryName.value;
 
     $.ajax({
-        url: 'https://safirgallery-production.up.railway.app/categories',
+        url: 'http://localhost:8080/categories',
         type: "PUT",
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -124,7 +124,7 @@ function updateCategory(elementId) {
 function deleteCategory(id) {
     if( confirm('Silmək istədiyinizdən əminsiniz?') ) {
         $.ajax({
-            url: `https://safirgallery-production.up.railway.app/categories/${id}`,
+            url: `http://localhost:8080/categories/${id}`,
             type: "DELETE",
             headers: {
                 'Authorization': 'Basic ' + btoa(login)
@@ -143,7 +143,7 @@ function deleteCategory(id) {
 
 function getCategoryById(id) {
     $.ajax({
-        url: 'https://safirgallery-production.up.railway.app/categories/' + id,
+        url: 'http://localhost:8080/categories/' + id,
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)

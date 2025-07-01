@@ -13,7 +13,7 @@ loginForm.addEventListener("submit", function (event) {
     const login = username.value + ":" + password.value;
 
     $.ajax({
-        url: "https://safirgallery-production.up.railway.app/users/login",
+        url: "http://localhost:8080/users/login",
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)

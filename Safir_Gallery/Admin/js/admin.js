@@ -6,6 +6,7 @@ const logout = document.getElementById('logout');
 const flowerForm = document.getElementById('flowerForm');
 const closeBtn = document.getElementById('closeBtn');
 const textInput = document.getElementById('text');
+const priceInput = document.getElementById('price');
 const fileInput = document.getElementById('file');
 const categoryInput = document.getElementById('category');
 const addBtn = document.getElementById('add');
@@ -42,6 +43,7 @@ closeBtn.addEventListener('click', function () {
     categoryInput.value = 0;
     textInput.value = '';
     fileInput.value = '';
+    priceInput.value = '';
 })
 
 flowerForm.addEventListener('submit', function (event) {
@@ -58,13 +60,15 @@ flowerForm.addEventListener('submit', function (event) {
 
 function getFlowers() {
     $.ajax({
-        url: "https://safirgallery-production.up.railway.app/flowers",
+        url: "http://localhost:8080/flowers",
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)
         },
         success: function (response) {
             container.innerHTML = '';
+            response.flowers = response.flowers.reverse();
+
             response.flowers.forEach(element => {
                 container.innerHTML +=
                     `<div class="card">
@@ -84,6 +88,7 @@ function getFlowers() {
                         <div class="card-body">
                             <h5 class="card-title">${element.text}</h5>
                             <p class="card-text">${element.category}</p>
+                            <p class="card-text">${element.price} AZN</p>
                             <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="edit(${element.id})">
                             <i class="fa-solid fa-edit"> &nbsp;Edit</i></a>
                             <a class="btn btn-danger" onclick="deleteElement(${element.id})">
@@ -97,12 +102,12 @@ function getFlowers() {
                     if (image == element.images[0]) {
                         inner.innerHTML +=
                             `<div class="carousel-item active">
-                            <img src="https://safirgallery-production.up.railway.app/uploads/${image}" class="d-block w-100">
+                            <img src="http://localhost:8080/uploads/${image}" class="d-block w-100">
                         </div>`;
                     } else {
                         inner.innerHTML +=
                             `<div class="carousel-item">
-                            <img src="https://safirgallery-production.up.railway.app/uploads/${image}" class="d-block w-100">
+                            <img src="http://localhost:8080/uploads/${image}" class="d-block w-100">
                         </div>`;
                     }
                 });
@@ -118,6 +123,7 @@ function getFlowers() {
 function updateElement(elementId) {
     const text = textInput.value;
     const category = categoryInput.value;
+    const price = priceInput.value;
     var formData = new FormData();
 
     const files = fileInput.files;
@@ -128,10 +134,11 @@ function updateElement(elementId) {
     }
     formData.append('text', text);
     formData.append('categoryId', category);
+    formData.append('price', price);
     formData.append('id', elementId);
 
     $.ajax({
-        url: 'https://safirgallery-production.up.railway.app/flowers',
+        url: 'http://localhost:8080/flowers',
         type: "PUT",
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -151,7 +158,7 @@ function updateElement(elementId) {
 
 function getCategories() {
     $.ajax({
-        url: 'https://safirgallery-production.up.railway.app/categories',
+        url: 'http://localhost:8080/categories',
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -172,7 +179,7 @@ function getCategories() {
 
 function getFlowerById(id) {
     $.ajax({
-        url: 'https://safirgallery-production.up.railway.app/flowers/' + id,
+        url: 'http://localhost:8080/flowers/' + id,
         type: 'GET',
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -181,6 +188,7 @@ function getFlowerById(id) {
             const element = response.flowers[0];
             textInput.value = element.text;
             categoryInput.value = element.categoryId;
+            priceInput.value = element.price;
         },
         error: function (xhr, status, error) {
             window.location.href = "login.html";
@@ -191,6 +199,7 @@ function getFlowerById(id) {
 function addElement() {    
     const text = textInput.value;
     const category = categoryInput.value;
+    const price = priceInput.value;
     var formData = new FormData();
 
     const files = fileInput.files;
@@ -201,9 +210,10 @@ function addElement() {
     }
     formData.append('text', text);
     formData.append('categoryId', category);
+    formData.append('price', price);
 
     $.ajax({
-        url: 'https://safirgallery-production.up.railway.app/flowers',
+        url: 'http://localhost:8080/flowers',
         type: "POST",
         headers: {
             'Authorization': 'Basic ' + btoa(login)
@@ -226,7 +236,7 @@ function addElement() {
 function deleteElement(id) {
     if( confirm('Silmək istədiyinizdən əminsiniz?') ) {
         $.ajax({
-            url: 'https://safirgallery-production.up.railway.app/flowers/' + id,
+            url: 'http://localhost:8080/flowers/' + id,
             type: 'DELETE',
             headers: {
                 'Authorization': 'Basic ' + btoa(login)
